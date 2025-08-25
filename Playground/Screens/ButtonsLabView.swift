@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ButtonsLabView: View {
     @State private var count = 0
-    @State private var isPressed = false
 
     var body: some View {
         VStack(spacing: 20) {
@@ -19,10 +18,15 @@ struct ButtonsLabView: View {
             Button(role: .destructive) { count = 0 } label: {
                 Label("Reset", systemImage: "arrow.counterclockwise")
             }
-            GlowPillButton(title: "Tap Me", isPressed: $isPressed) {
+            GlowPillButton(title: "Tap Me", kind: .Primary) {
                 print("Tapped!")
             }
             .padding()
+            .frame(width: Constants.Screen.width)
+            
+            GlowPillButton(title: "Tap Me", kind: .Secondary) {
+                print("Tapped!")
+            }
             .frame(width: Constants.Screen.width)
         }
         .padding(100)
@@ -32,19 +36,29 @@ struct ButtonsLabView: View {
 
 struct GlowPillButton: View {
     let title: String
-    @Binding var isPressed: Bool
+    var kind: ButtonKind
+    @State private var isPressed = false
     let action: () -> Void
     @State private var touchPoint = CGPoint.zero
     
     // Tune these to taste
     private let glowDiameter: CGFloat = 260
+    let primaryColor: Color
+    
+    init(title: String, kind: ButtonKind = .Primary, action: @escaping () -> Void) {
+        self.title = title
+        self.kind = kind
+        self.action = action
+        
+        self.primaryColor = kind == .Primary ? .blue : .clear
+    }
     
     var body: some View {
         GeometryReader { geo in
             let size = geo.size
             ZStack {
                 // Background
-                Color.blue
+                primaryColor
                     .clipShape(Capsule())
                     .brightness(isPressed ? 0.2 : 0)
                 
@@ -53,8 +67,8 @@ struct GlowPillButton: View {
                     .fill(
                         RadialGradient(
                             colors: [
-                                Color.blue.opacity(0.2),
-                                Color.blue.opacity(0.0)
+                                Color.white.opacity(0.2),
+                                Color.white.opacity(0.0)
                             ],
                             center: .center,
                             startRadius: 0,
@@ -78,8 +92,7 @@ struct GlowPillButton: View {
                     .brightness(isPressed ? 0.3 : 0)
             }
             .overlay(
-                Capsule().stroke(Color.blue, lineWidth: 1)
-                    .brightness(isPressed ? 0.4 : 0)
+                Capsule().stroke(Color.white.opacity(0.5), lineWidth: 1)
             )
             .scaleEffect(isPressed ? 1.07 : 1)
             .contentShape(Capsule()) // hit area matches pill
@@ -92,14 +105,12 @@ struct GlowPillButton: View {
                             }
                         }
                         // Update position (clamped)
-                        let s = size
                         touchPoint = CGPoint(
-                            x: min(max(0, value.location.x), s.width),
-                            y: min(max(0, value.location.y), s.height)
+                            x: min(max(0, value.location.x), size.width),
+                            y: min(max(0, value.location.y), size.height)
                         )
                     }
                     .onEnded { value in
-                        let inside = rect(for: size).contains(value.location)
                         withAnimation(.easeOut(duration: 0.3)) {
                             isPressed = false
                         }
@@ -110,20 +121,10 @@ struct GlowPillButton: View {
             )
         }
         .frame(height: 48) // fixed height; width adapts to content
-        .background(
-            // This background expands the geometry reader to intrinsic width
-            Text(title)
-                .font(.headline)
-                .opacity(0)
-        )
     }
-    
-    // Helpers
-    private func rect(for size: CGSize) -> CGRect { .init(origin: .zero, size: size) }
-    private func clamped(_ p: CGPoint, in size: CGSize) -> CGPoint {
-        CGPoint(
-            x: min(max(0, p.x), size.width),
-            y: min(max(0, p.y), size.height)
-        )
-    }
+}
+
+enum ButtonKind {
+    case Primary
+    case Secondary
 }

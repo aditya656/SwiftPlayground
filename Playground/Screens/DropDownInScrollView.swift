@@ -14,7 +14,7 @@ struct DropDownInScrollView: View {
     @State var index: Int = 0
     let array = ["afzal",
      "pradhuman", "nikhil", "tejas", "aditya", "tj", "shaswat","afzal", "pradhuman", "nikhil", "tejas", "aditya", "tj", "shaswat","afzal", "pradhuman", "nikhil", "tejas", "aditya", "tj", "shaswat","afzal", "pradhuman", "nikhil", "tejas", "aditya", "tj", "shaswat","afzal", "pradhuman", "nikhil", "tejas", "aditya", "tj", "shaswat","afzal", "pradhuman", "nikhil", "tejas", "aditya", "tj", "shaswat","afzal", "pradhuman", "nikhil", "tejas", "aditya", "tj", "shaswat","afzal", "pradhuman", "nikhil", "tejas", "aditya", "tj", "shaswat"]
-//    @State private var cellPositions: [Int: CGFloat] = [:]
+    @State private var cellPositions: [Int: CGFloat] = [:]
     @State private var globalOffset: CGFloat = 0
     
     var body: some View {
@@ -43,7 +43,7 @@ struct DropDownInScrollView: View {
                 .padding()
             }
             .onPreferenceChange(CellPositionPreferenceKey.self) { positions in
-//                cellPositions = positions
+                cellPositions = positions
             }
             .background(
                 GeometryReader { geo in
@@ -51,24 +51,24 @@ struct DropDownInScrollView: View {
                         .onAppear {
                             globalOffset = geo.frame(in: .global).minY
                         }
-                        .onChange(of: geo.frame(in: .global).minY) { newOffset in
+                        .onChange(of: geo.frame(in: .global).minY) { newOffset, _ in
                             globalOffset = newOffset
                         }
                 }
             )
-//            if showDropdown, let cellPosition = cellPositions[index] {
-//                Rectangle()
-//                    .fill(Color.red)
-//                    .frame(width: 150, height: 40)
-//                    .position(x: UIScreen.main.bounds.width / 2, y: cellPosition - globalOffset) // Adjust y to position above
-//                    .onTapGesture {
-//                        showDropdown = false
-//                    }
-////                Text("\(cellPosition - globalOffset)")
-////                Color.clear
-////                    .frame(height: 20)
-////                Text("\(cellPosition)")
-//            }
+            if showDropdown, let cellPosition = cellPositions[index] {
+                Rectangle()
+                    .fill(Color.red)
+                    .frame(width: 150, height: 40)
+                    .position(x: Constants.Screen.width / 2, y: cellPosition - globalOffset) // Adjust y to position above
+                    .onTapGesture {
+                        showDropdown = false
+                    }
+//                Text("\(cellPosition - globalOffset)")
+//                Color.clear
+//                    .frame(height: 20)
+//                Text("\(cellPosition)")
+            }
         }
     }
 }

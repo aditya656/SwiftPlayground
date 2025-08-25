@@ -40,69 +40,32 @@ struct WaterNotificationView: View {
                 .frame(height: 150)
             }
             
-            Button(action: {
+            GlowPillButton(title: "Notify") {
                 viewModel.scheduleNotification()
-//                showShareSheet = true
-            }, label: {
-                Text("Notify")
-            })
-            .foregroundStyle(Color.white)
-            .padding(.horizontal, 25)
-            .padding(.vertical, 10)
-            .background(Color.blue)
-            .clipShape(RoundedRectangle(cornerRadius: 6))
-            .padding(.top, 24)
+            }
             .alert("Alert", isPresented: $viewModel.showAlert) {
                 Button("OK", role: .cancel) {}
+                Button("OK", role: .confirm) {}
+                Button("OK", role: .close) {}
+                Button("OK", role: .destructive) {}
             } message: {
                 Text("\(viewModel.alertText)")
             }
-            Button(action: {
+            GlowPillButton(title: "Remove All", kind: .Secondary) {
                 viewModel.removeAllExistingNotifications()
-            }, label: {
-                Text("Remove All")
-            })
-            .foregroundStyle(Color.white)
-            .padding(.horizontal, 25)
-            .padding(.vertical, 10)
-            .background(Color.blue)
-            .clipShape(RoundedRectangle(cornerRadius: 6))
-            .padding(.top, 24)
-//            .sheet(isPresented: $showShareSheet) {
-//                let url = URL(string: "https://weebz.com/zoro-sneaker")!
-//                let image = UIImage(named: "AppIcon") ?? UIImage()
-//                let metadataSource = LinkMetadataItemSource(url: url, title: "Zoro Lows Sneaker", subtitle: "Inspired by Wano Arc", image: image)
-//                ShareSheet(activityItems: [metadataSource, "Title2", "Title3"])
-//            }
-            Button(action: {
+            }
+            Color.clear.frame(height: 50)
+            GlowPillButton(title: "Add Routine Notifications", kind: .Primary) {
                 viewModel.scheduleRoutineNotifications()
-//                showShareSheet = true
-            }, label: {
-                Text("Add Routine Notifications")
-            })
-            .foregroundStyle(Color.white)
-            .padding(.horizontal, 25)
-            .padding(.vertical, 10)
-            .background(Color.blue)
-            .clipShape(RoundedRectangle(cornerRadius: 6))
-            .padding(.top, 24)
+            }
             .alert("Alert", isPresented: $viewModel.showAlert) {
                 Button("OK", role: .cancel) {}
             } message: {
                 Text("\(viewModel.alertText)")
             }
-            Button(action: {
+            GlowPillButton(title: "Remove Routine Notifications", kind: .Secondary) {
                 viewModel.removeRoutineNotifications()
-//                showShareSheet = true
-            }, label: {
-                Text("Remove Routine Notifications")
-            })
-            .foregroundStyle(Color.white)
-            .padding(.horizontal, 25)
-            .padding(.vertical, 10)
-            .background(Color.blue)
-            .clipShape(RoundedRectangle(cornerRadius: 6))
-            .padding(.top, 24)
+            }
             .alert("Alert", isPresented: $viewModel.showAlert) {
                 Button("OK", role: .cancel) {}
             } message: {

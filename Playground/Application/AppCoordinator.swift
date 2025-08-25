@@ -35,26 +35,17 @@ final class AppCoordinator: NSObject {
     }
 
     private func seedScreens() {
-        registry.register(
-            SwiftUIScreen(id: "WaterNotification", title: "Water Notification") { WaterNotificationView() }
-        )
-        registry.register(
-            SwiftUIScreen(id: "buttons", title: "Buttons Lab") { ButtonsLabView() }
-        )
-        registry.register(
-            SwiftUIScreen(id: "cards", title: "Cards Lab") { CardsLabView() }
-        )
-        registry.register(
-            UIKitScreen(id: "uikit-demo", title: "UIKit Demo") { UIKitDemoViewController() }
-        )
-        registry.register(
-            SwiftUIScreen(id: "OpacityTransitionTest", title: "Opacity Transition Test") { OpacityTransitionTest() }
-        )
-        registry.register(SwiftUIScreen(id: "ZeptoDeliveryPage", title: "ZeptoDeliveryPage") { ZeptoDeliveryPage() })
-        registry.register(SwiftUIScreen(id: "DropDownInScrollView", title: "DropDownInScrollView") { DropDownInScrollView() })
-        registry.register(SwiftUIScreen(id: "ForYouPageGeometryReader", title: "ForYouPageGeometryReader") { ForYouPageGeometryReader() })
-        registry.register(SwiftUIScreen(id: "AmbientBackgroundEffect", title: "AmbientBackgroundEffect") { AmbientBackgroundEffect() })
+        registry.register(SwiftUIScreen(id: "WaterNotification", title: "Water Notification") { WaterNotificationView() })
+        registry.register(SwiftUIScreen(id: "buttons", title: "Buttons Lab") { ButtonsLabView() })
         registry.register(SwiftUIScreen(id: "NameSpaceAnimation", title: "NameSpaceAnimation") { NameSpaceAnimation() })
+        registry.register(SwiftUIScreen(id: "TimeLineViewBootcamp", title: "TimeLineViewBootcamp") { TimeLineViewBootcamp() })
+//        registry.register(SwiftUIScreen(id: "cards", title: "Cards Lab") { CardsLabView() })
+//        registry.register(UIKitScreen(id: "uikit-demo", title: "UIKit Demo") { UIKitDemoViewController() })
+//        registry.register(SwiftUIScreen(id: "OpacityTransitionTest", title: "Opacity Transition Test") { OpacityTransitionTest() })
+//        registry.register(SwiftUIScreen(id: "ZeptoDeliveryPage", title: "ZeptoDeliveryPage") { ZeptoDeliveryPage() })
+//        registry.register(SwiftUIScreen(id: "DropDownInScrollView", title: "DropDownInScrollView") { DropDownInScrollView() })
+//        registry.register(SwiftUIScreen(id: "ForYouPageGeometryReader", title: "ForYouPageGeometryReader") { ForYouPageGeometryReader() })
+//        registry.register(SwiftUIScreen(id: "AmbientBackgroundEffect", title: "AmbientBackgroundEffect") { AmbientBackgroundEffect() })
     }
 
     private func show(screen: Screen) {
