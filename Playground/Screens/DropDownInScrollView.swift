@@ -77,6 +77,18 @@ struct CellPositionPreferenceKey: PreferenceKey {
     static let defaultValue: [Int: CGFloat] = [:]
     static func reduce(value: inout [Int: CGFloat], nextValue: () -> [Int: CGFloat]) {
         value.merge(nextValue(), uniquingKeysWith: { $1 })
+        /* what reduce does?
+        Imagine three child views contribute:
+        [0: 10]
+        [1: 20]
+        [0: 15]
+
+        The reduce process does:
+        Start: [:]
+        Merge [0: 10] → [0: 10]
+        Merge [1: 20] → [0: 10, 1: 20]
+        Merge [0: 15] → [0: 15, 1: 20] (the last wins for key 0)
+         */
     }
 }
 
