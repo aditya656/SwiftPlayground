@@ -43,6 +43,9 @@ final class AppCoordinator: NSObject {
         registry.register(UIKitScreen(id: "uikit-ar-preview", title: "AR Preview") { ARProductShowcaseViewController.getPlantController() })
         registry.register(SwiftUIScreen(id: "TimeLineViewBootcamp", title: "TimeLineViewBootcamp") { TimeLineViewBootcamp() })
         registry.register(SwiftUIScreen(id: "ParallaxEffectView", title: "ParallaxEffectView") { ParallaxEffectView() })
+        registry.register(UIKitScreen(id: "ParallaxEffectViewUIKit", title: "ParallaxEffectViewUIKit", builder: {
+            ParallaxEffectViewUIKit()
+        }))
 //        registry.register(SwiftUIScreen(id: "cards", title: "Cards Lab") { CardsLabView() })
 //        registry.register(UIKitScreen(id: "uikit-demo", title: "UIKit Demo") { UIKitDemoViewController() })
 //        registry.register(SwiftUIScreen(id: "OpacityTransitionTest", title: "Opacity Transition Test") { OpacityTransitionTest() })
