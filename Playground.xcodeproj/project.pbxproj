@@ -14,17 +14,29 @@
 		771C4ED12E44CF00000F3C8D /* Exceptions for "Playground" folder in "Playground" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				"Image Cache/UIImage+ImageCache.swift",
 				Info.plist,
 			);
 			target = 771C4EBE2E44CEFE000F3C8D /* Playground */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		77665DDC2F94C40700D40AB3 /* Exceptions for "Playground" folder in "Copy Bundle Resources" phase from "Playground" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 771C4EBD2E44CEFE000F3C8D /* Resources */;
+			membershipExceptions = (
+				"Image Cache/UIImage+ImageCache.swift",
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		771C4EC12E44CEFE000F3C8D /* Playground */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				771C4ED12E44CF00000F3C8D /* Exceptions for "Playground" folder in "Playground" target */,
+				77665DDC2F94C40700D40AB3 /* Exceptions for "Playground" folder in "Copy Bundle Resources" phase from "Playground" target */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -145,6 +157,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JC8MFK8JY2;
@@ -161,8 +174,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.local.Playground;
+				PRODUCT_BUNDLE_IDENTIFIER = com.local.SwiftPlayground;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -174,6 +188,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JC8MFK8JY2;
@@ -190,8 +205,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.local.Playground;
+				PRODUCT_BUNDLE_IDENTIFIER = com.local.SwiftPlayground;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

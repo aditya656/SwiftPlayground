@@ -13,19 +13,22 @@ struct ButtonsLabView: View {
     var body: some View {
         VStack(spacing: 20) {
             Text("Buttons Lab").font(.title)
-            Button("Tap me (\(count))") { count += 1 }
+            Button("Tap me (\(count))") {
+                count += 1
+                NSLog("-----")
+            }
                 .buttonStyle(.borderedProminent)
             Button(role: .destructive) { count = 0 } label: {
                 Label("Reset", systemImage: "arrow.counterclockwise")
             }
             GlowPillButton(title: "Tap Me", kind: .Primary) {
-                print("Tapped!")
+                NSLog("Tapped!")
             }
             .padding()
             .frame(width: Constants.Screen.width)
             
             GlowPillButton(title: "Tap Me", kind: .Secondary) {
-                print("Tapped!")
+                NSLog("Tapped!")
             }
             .frame(width: Constants.Screen.width)
         }

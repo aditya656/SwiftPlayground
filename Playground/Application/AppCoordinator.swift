@@ -46,6 +46,8 @@ final class AppCoordinator: NSObject {
         registry.register(UIKitScreen(id: "ParallaxEffectViewUIKit", title: "ParallaxEffectViewUIKit", builder: {
             ParallaxEffectViewUIKit()
         }))
+        registry.register(SwiftUIScreen(id: "MathQuizGame", title: "Math Quiz Game", builder: { MathQuizGame() }))
+        registry.register(SwiftUIScreen(id: "ThemeAwareView", title: "Theme Aware View", builder: { ThemeAwareView() }))
 //        registry.register(SwiftUIScreen(id: "cards", title: "Cards Lab") { CardsLabView() })
 //        registry.register(UIKitScreen(id: "uikit-demo", title: "UIKit Demo") { UIKitDemoViewController() })
 //        registry.register(SwiftUIScreen(id: "OpacityTransitionTest", title: "Opacity Transition Test") { OpacityTransitionTest() })
